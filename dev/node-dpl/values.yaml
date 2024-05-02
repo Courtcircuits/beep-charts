@@ -1,5 +1,5 @@
 replicaCount: 1
-image: gitlab.polytech.umontpellier.fr:5050/beep/voice/api:latest
+image: gitlab.polytech.umontpellier.fr:5050/beep/voice/api:565d7869
 appURL: back.ve.moreiradj.net
 appName: voice-api
 service:
