@@ -30,3 +30,5 @@ config:
   smtpPort: 465
   smtpUsername: beep.bip.boup@gmail.com
   clientURL: "http://localhost:4200"
+  redisHost: "beepback-redis-master"
+  redisPort: 6379

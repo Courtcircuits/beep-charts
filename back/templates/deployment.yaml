@@ -60,6 +60,10 @@ spec:
               key: SMTP_HOST
         - name: SMTP_PORT
           value: {{ .Values.config.smtpPort |quote}}
+        - name: REDIS_HOST
+          value: {{ .Values.config.redisHost |quote}}
+        - name: REDIS_PORT
+          value: {{ .Values.config.redisPort |quote}}
         - name: SMTP_USERNAME
           value: {{ .Values.config.smtpUsername | quote}}
         - name: SMTP_PASSWORD
