@@ -17,8 +17,62 @@ spec:
     spec:
       containers:
       - name: {{ .Values.appName }}
-        image: {{ .Values.image | quote }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         ports:
         - containerPort: {{ .Values.service.internalPort | int }}
+        env:
+        - name: APP_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.appName }}-secret
+              key: APP_KEY
+        - name: TZ
+          value: {{ .Values.config.tz }}
+        - name: NODE_ENV
+          value: {{ .Values.config.nodeEnv }}
+        - name: PORT
+          value: {{ .Values.config.port }}
+        - name: WS_PORT
+          value: {{ .Values.config.wsPort }}
+        - name: HOST
+          value: "{{ .Values.appName }}-svc"
+        - name: LOG_LEVEL
+          value: {{ .Values.config.logLevel }}
+        - name: ENDPOINT
+          value: "http://{{ .Values.appName }}-svc:{{ .Values.service.externalPort }}"
+        - name: DB_HOST
+          value: "{{ .Release.Name}}-postgresql"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_DATABASE
+          value: {{ .Values.postgresql.auth.database}}
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-postgresql
+              key: postgres-password
+        - name: SMTP_HOST
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.appName }}-secret
+              key: SMTP_HOST
+        - name: SMTP_PORT
+          value: {{ .Values.config.smtpPort }}
+        - name: SMTP_USERNAME
+          value: {{ .Values.config.smtpUsername }}
+        - name: SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.appName }}-secret
+              key: SMTP_PASSWORD
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.appName }}-secret
+              key: REDIS_URL
+        - name: CLIENT_URL
+          value: {{ .Values.config.clientURL }}
       imagePullSecrets:
       - name: regcred

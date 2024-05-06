@@ -1,7 +1,32 @@
 replicaCount: 1
-image: gitlab.polytech.umontpellier.fr:5050/beep/voice/api:565d7869
+image:
+  repository: gitlab.polytech.umontpellier.fr:5050/beep/voice/api
+  tag: 565d7869
 appURL: beepback.ratathune.fr
 appName: voice-api
 service:
   internalPort: 80
   externalPort: 80
+
+postgresql:
+  auth:
+    enablePostgresUser: true
+    database: "beep"
+
+redis:
+  auth:
+    enabled: true
+    password: "beep" # TODO: put in vault
+
+postgresUser: "postgres"
+
+config:
+  tz: "UTC"
+  port: 80
+  wsPort: 81
+  host: "localhost"
+  logLevel: "info"
+  nodeEnv: "production"
+  smtpPort: 465
+  smtpUsername: beep.bip.boup@gmail.com
+  clientURL: "http://localhost:4200"
