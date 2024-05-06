@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ printf "%s-ingress" .Values.appName | trunc 63 }}
+  name: {{ printf "%s-ingress-ws" .Values.appName | trunc 63 }}
   namespace: {{ .Release.Namespace }}
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
@@ -10,16 +10,6 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: {{ .Values.appURL }}
-    http:
-      paths:      
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: {{ printf "%s-svc" .Values.appName | trunc 63 }}
-            port:
-              name: http
   - host: {{ .Values.wsAppURL }}
     http:
       paths:      
