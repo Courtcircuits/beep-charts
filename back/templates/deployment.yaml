@@ -27,17 +27,17 @@ spec:
               name: {{ .Values.appName }}-secret
               key: APP_KEY
         - name: TZ
-          value: {{ .Values.config.tz }}
+          value: {{ .Values.config.tz | quote }}
         - name: NODE_ENV
-          value: {{ .Values.config.nodeEnv }}
+          value: {{ .Values.config.nodeEnv | quote}}
         - name: PORT
-          value: {{ .Values.config.port }}
+          value: {{ .Values.config.port | quote}}
         - name: WS_PORT
-          value: {{ .Values.config.wsPort }}
+          value: {{ .Values.config.wsPort | quote}}
         - name: HOST
           value: "{{ .Values.appName }}-svc"
         - name: LOG_LEVEL
-          value: {{ .Values.config.logLevel }}
+          value: {{ .Values.config.logLevel | quote}}
         - name: ENDPOINT
           value: "http://{{ .Values.appName }}-svc:{{ .Values.service.externalPort }}"
         - name: DB_HOST
@@ -45,7 +45,7 @@ spec:
         - name: DB_PORT
           value: "5432"
         - name: DB_DATABASE
-          value: {{ .Values.postgresql.auth.database}}
+          value: {{ .Values.postgresql.auth.database | quote}}
         - name: DB_USER
           value: "postgres"
         - name: DB_PASSWORD
@@ -59,9 +59,9 @@ spec:
               name: {{ .Values.appName }}-secret
               key: SMTP_HOST
         - name: SMTP_PORT
-          value: {{ .Values.config.smtpPort }}
+          value: {{ .Values.config.smtpPort |quote}}
         - name: SMTP_USERNAME
-          value: {{ .Values.config.smtpUsername }}
+          value: {{ .Values.config.smtpUsername | quote}}
         - name: SMTP_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -73,6 +73,6 @@ spec:
               name: {{ .Values.appName }}-secret
               key: REDIS_URL
         - name: CLIENT_URL
-          value: {{ .Values.config.clientURL }}
+          value: {{ .Values.config.clientURL | quote}}
       imagePullSecrets:
       - name: regcred
