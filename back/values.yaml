@@ -7,9 +7,9 @@ wsAppURL: wsbeepback.ratathune.fr
 appName: voice-api
 service:
   internalPort: 80
-  wsInternalPort: 81
+  wsInternalPort: 79
   externalPort: 80
-  wsExternalPort: 81
+  wsExternalPort: 79
 
 postgresql:
   auth:
@@ -26,7 +26,7 @@ postgresUser: "postgres"
 config:
   tz: "UTC"
   port: 80
-  wsPort: 81
+  wsPort: 79
   host: "0.0.0.0"
   logLevel: "info"
   nodeEnv: "production"
