@@ -20,3 +20,13 @@ spec:
             name: {{ printf "%s-svc" .Values.appName | trunc 63 }}
             port:
               number: {{ .Values.service.externalPort }}
+  - host: {{ .Values.wsAppURL }}
+    http:
+      paths:      
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: {{ printf "%s-svc" .Values.appName | trunc 63 }}
+            port:
+              number: {{ .Values.service.wsExternalPort }}

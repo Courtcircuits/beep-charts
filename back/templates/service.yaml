@@ -9,5 +9,7 @@ spec:
   ports:
   - port: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
+  - port: {{ .Values.service.wsExternalPort }}
+    targetPort: {{ .Values.service.wsInternalPort }}
   selector:
     app: {{ .Values.appName }}
