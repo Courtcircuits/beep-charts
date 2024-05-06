@@ -27,6 +27,7 @@ config:
   tz: "UTC"
   port: 80
   wsPort: 79
+  endpoint: "https://beepback.ratathune.fr"
   host: "0.0.0.0"
   logLevel: "info"
   nodeEnv: "production"
