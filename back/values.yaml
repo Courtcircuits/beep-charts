@@ -15,6 +15,7 @@ postgresql:
   auth:
     enablePostgresUser: true
     database: "beep"
+    postgresPassword: "beep" # TODO: put in vault"
 
 redis:
   auth:
