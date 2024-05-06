@@ -5,6 +5,6 @@ image:
 appURL: beepfront.ratathune.fr
 appName: voice-api-front
 service:
-  internalPort: 80
-  externalPort: 80
+  internalPort: 8080
+  externalPort: 8080
 
