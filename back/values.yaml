@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: gitlab.polytech.umontpellier.fr:5050/beep/voice/api
-  tag: 15fe29e6
+  tag: ce506b75
 appURL: beepback.ratathune.fr
 wsAppURL: wsbeepback.ratathune.fr
 appName: voice-api
