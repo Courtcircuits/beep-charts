@@ -19,4 +19,4 @@ spec:
           service:
             name: {{ printf "%s-svc" .Values.appName | trunc 63 }}
             port:
-              name: ws
+              number: {{ .Values.service.wsExternalPort | int}}
