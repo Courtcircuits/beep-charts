@@ -19,7 +19,7 @@ spec:
           service:
             name: {{ printf "%s-svc" .Values.appName | trunc 63 }}
             port:
-              number: {{ .Values.service.externalPort }}
+              name: http
   - host: {{ .Values.wsAppURL }}
     http:
       paths:      
@@ -29,4 +29,4 @@ spec:
           service:
             name: {{ printf "%s-svc" .Values.appName | trunc 63 }}
             port:
-              number: {{ .Values.service.wsExternalPort }}
+              name: ws
