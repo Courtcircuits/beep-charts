@@ -1,0 +1,10 @@
+replicaCount: 1
+image:
+  repository: gitlab.polytech.umontpellier.fr:5050/beep/front
+  tag: voice-d04ad829
+appURL: ppbeepfront.ratathune.fr
+appName: preprod-voice-api-front
+service:
+  internalPort: 8080
+  externalPort: 8080
+

@@ -1,0 +1,35 @@
+replicaCount: 1
+image:
+  repository: gitlab.polytech.umontpellier.fr:5050/beep/voice/api
+  tag: a1cb3d64
+appURL: ppbeepback.ratathune.fr
+wsAppURL: ppwsbeepback.ratathune.fr
+appName: preprod-voice-api
+service:
+  internalPort: 80
+  wsInternalPort: 79
+  externalPort: 80
+  wsExternalPort: 79
+postgresql:
+  auth:
+    enablePostgresUser: true
+    database: "beep"
+    postgresPassword: "beep" # TODO: put in vault"
+redis:
+  auth:
+    enabled: true
+    password: "beep" # TODO: put in vault
+postgresUser: "postgres"
+config:
+  tz: "UTC"
+  port: 80
+  wsPort: 79
+  endpoint: "https://ppbeepback.ratathune.fr"
+  host: "0.0.0.0"
+  logLevel: "info"
+  nodeEnv: "production"
+  smtpPort: 465
+  smtpUsername: beep.bip.boup@gmail.com
+  clientURL: "http://localhost:4200"
+  redisHost: "beepback-redis-master"
+  redisPort: 6379

@@ -7,7 +7,7 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
-  description: Tmtc la chienneté
+  description: Beep project argocd
   destinations:
   - namespace: '*'
     server: '*'

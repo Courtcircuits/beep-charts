@@ -1,20 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: beepback
+  name: beepback-preprod
   namespace: argocd
   labels:
     argocd.argoproj.io/instance: argocd
 spec:
   destination:
     name: in-cluster
-    namespace: beep
+    namespace: beep-preprod
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-  project: beep
+  project: beep-preprod
   source:
     path: back
     repoURL: https://github.com/Courtcircuits/beep-charts
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-preprod.yaml
